@@ -14,6 +14,15 @@
  *
  * This is a personal portfolio exercise, not a CLP Holdings publication —
  * see README and the disclaimer on every page for details.
+ *
+ * Revision note: a first pass of this dataset (published earlier) had two
+ * confirmed errors, corrected after a manual fact-check against CLP's own
+ * 10-year financial summary: (1) FY2022 Operating Earnings was originally
+ * overstated at HK$7.56bn; the correct figure is HK$4.623bn (down 51.4%
+ * from FY2021's HK$9.517bn). (2) The dividend-per-share series originally
+ * showed a steady year-on-year rise (2.62 -> 2.91 across 2020-2023); the
+ * correct figure is flat at HK$3.10 for all four of those years, only
+ * rising in 2024 and 2025. Both are fixed below.
  */
 
 const CLP_DATA = {
@@ -29,28 +38,30 @@ const CLP_DATA = {
 
   // "Total Earnings" — statutory profit attributable to shareholders, HK$bn.
   totalEarnings: {
-    values: [11.59, 8.63, 0.92, 6.79, 11.74, 10.47],
+    values: [11.59, 8.63, 0.92, 6.655, 11.742, 10.468],
     note:
       "2022's near-wipeout was driven almost entirely by EnergyAustralia: a HK$2.9bn fair-value loss on energy hedges plus unplanned outages at the Yallourn (VIC) and Mount Piper (NSW) coal plants forced CLP to buy replacement power at spiking spot prices.",
   },
 
   // "Operating Earnings" — CLP's own underlying/core measure, ex fair-value
-  // movements and exceptional items, HK$bn. Comparable disclosure from 2022.
+  // movements and exceptional items, HK$bn. Comparable disclosure from 2021.
   operatingEarnings: {
-    years: [2022, 2023, 2024, 2025],
-    values: [7.56, 9.32, 10.95, 10.69],
+    years: [2021, 2022, 2023, 2024, 2025],
+    values: [9.517, 4.623, 10.127, 10.949, 10.69],
   },
 
-  // Full-year dividend per share, HK$.
+  // Full-year dividend per share, HK$. Flat at HK$3.10 for four straight
+  // years (2020-2023, incl. through the 2022 earnings shock), then raised
+  // in 2024 and 2025.
   dividendPerShare: {
-    values: [2.62, 2.70, 2.80, 2.91, 3.15, 3.20],
+    values: [3.10, 3.10, 3.10, 3.10, 3.15, 3.20],
   },
 
   // Return on equity, %, self-calculated as Total Earnings ÷ year-end equity
   // attributable to shareholders, except where noted.
   roe: {
     years: [2021, 2022, 2023, 2024],
-    values: [7.4, 0.8, 6.4, 12.0],
+    values: [7.4, 0.8, 6.3, 12.0],
     basis: ["calculated", "calculated", "calculated", "third-party estimate"],
     note:
       "2021-2023 calculated here from CLP's reported Total Earnings ÷ equity attributable to shareholders at year end (HK$116.9bn / 109.4bn / 106.2bn). 2024 (~12%) is a third-party estimate on a slightly different profit/equity base (~HK$13bn / ~HK$110bn) — shown for direction, not exact comparability.",
