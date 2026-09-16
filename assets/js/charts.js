@@ -93,8 +93,6 @@
     );
 
     // --- Chart 2: Total Earnings vs Operating Earnings ---
-    const opMap = {};
-    d.operatingEarnings.years.forEach((y, i) => (opMap[y] = d.operatingEarnings.values[i]));
     earningsChart = new Chart(
       document.getElementById("chart-earnings"),
       {
@@ -115,14 +113,13 @@
             },
             {
               label: "Operating Earnings (underlying)",
-              data: d.years.map((y) => (y in opMap ? opMap[y] : null)),
+              data: d.operatingEarnings.values,
               borderColor: p.muted,
               backgroundColor: p.muted,
               borderWidth: 2,
               borderDash: [5, 4],
               pointRadius: 4,
               pointBackgroundColor: p.muted,
-              spanGaps: false,
               tension: 0.25,
               fill: false,
             },
@@ -155,32 +152,6 @@
           ],
         },
         options: baseOptions(p, (v) => `HK$${v.toFixed(2)}`),
-      })
-    );
-
-    // --- Chart 4: ROE ---
-    charts.push(
-      new Chart(document.getElementById("chart-roe"), {
-        type: "line",
-        data: {
-          labels: d.roe.years,
-          datasets: [
-            {
-              label: "ROE",
-              data: d.roe.values,
-              borderColor: p.series1,
-              backgroundColor: p.series1,
-              borderWidth: 2,
-              pointRadius: (ctx) => (d.roe.basis[ctx.dataIndex] === "third-party estimate" ? 6 : 4),
-              pointStyle: (ctx) =>
-                d.roe.basis[ctx.dataIndex] === "third-party estimate" ? "rectRot" : "circle",
-              pointBackgroundColor: p.series1,
-              tension: 0.25,
-              fill: false,
-            },
-          ],
-        },
-        options: baseOptions(p, (v) => `${v.toFixed(1)}%`),
       })
     );
   }
