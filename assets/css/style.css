@@ -70,39 +70,28 @@ body {
 body {
   background: var(--page-plane);
   color: var(--text-primary);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   position: relative;
   overflow-x: hidden;
 }
 
-body::before,
-body::after {
+body::before {
   content: "";
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(90px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 820px;
+  background: radial-gradient(640px 440px at 10% -8%, color-mix(in srgb, var(--series-1) 28%, transparent), transparent 70%),
+    radial-gradient(520px 420px at 90% 2%, color-mix(in srgb, var(--series-2) 20%, transparent), transparent 70%),
+    linear-gradient(var(--gridline) 1px, transparent 1px), linear-gradient(90deg, var(--gridline) 1px, transparent 1px);
+  background-size: auto, auto, 38px 38px, 38px 38px;
+  mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 92%);
   pointer-events: none;
   z-index: -1;
-}
-
-body::before {
-  top: -160px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: var(--series-1);
-  opacity: 0.16;
-}
-
-body::after {
-  top: 20px;
-  right: -160px;
-  width: 420px;
-  height: 420px;
-  background: var(--series-2);
-  opacity: 0.1;
 }
 
 a {
@@ -191,10 +180,11 @@ a {
 }
 
 .hero h1 {
-  font-size: clamp(28px, 4.2vw, 40px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0 0 14px;
+  font-size: clamp(32px, 5.6vw, 54px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
 }
 
 .hero p.lede {
@@ -233,12 +223,25 @@ a {
 }
 
 .kpi-tile {
+  position: relative;
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 18px 18px 16px;
+  padding: 16px 18px 20px;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.kpi-tile::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 10px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--series-1), color-mix(in srgb, var(--series-1) 25%, transparent));
 }
 
 .kpi-tile:hover {
@@ -247,21 +250,28 @@ a {
   box-shadow: var(--shadow-md);
 }
 
+.kpi-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
 .kpi-icon {
-  width: 36px;
-  height: 36px;
+  flex: none;
+  width: 34px;
+  height: 34px;
   border-radius: 10px;
   background: var(--brand-soft);
   color: var(--series-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
 }
 
 .kpi-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
 }
 
 .kpi-value {
@@ -273,12 +283,13 @@ a {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin: 0 0 8px;
+  margin: 0;
 }
 
 .kpi-value {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   margin: 0 0 6px;
   font-variant-numeric: proportional-nums;
 }
@@ -315,8 +326,9 @@ section.block {
 }
 
 section.block h2 {
-  font-size: 21px;
-  letter-spacing: -0.01em;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
   margin: 0 0 4px;
 }
 
@@ -449,7 +461,9 @@ section.block .sub {
 }
 
 .article h2 {
-  font-size: 20px;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   margin: 34px 0 10px;
 }
 
