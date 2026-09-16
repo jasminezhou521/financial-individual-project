@@ -51,6 +51,15 @@
   }
 
   const charts = [];
+  let earningsChart = null;
+  let earningsView = "both"; // "both" | "total" | "underlying"
+
+  function applyEarningsView() {
+    if (!earningsChart) return;
+    earningsChart.setDatasetVisibility(0, earningsView !== "underlying");
+    earningsChart.setDatasetVisibility(1, earningsView !== "total");
+    earningsChart.update();
+  }
 
   function renderAll() {
     const p = palette();
@@ -86,8 +95,9 @@
     // --- Chart 2: Total Earnings vs Operating Earnings ---
     const opMap = {};
     d.operatingEarnings.years.forEach((y, i) => (opMap[y] = d.operatingEarnings.values[i]));
-    charts.push(
-      new Chart(document.getElementById("chart-earnings"), {
+    earningsChart = new Chart(
+      document.getElementById("chart-earnings"),
+      {
         type: "line",
         data: {
           labels: d.years,
@@ -119,8 +129,10 @@
           ],
         },
         options: baseOptions(p, (v) => `HK$${v.toFixed(1)}bn`),
-      })
+      }
     );
+    charts.push(earningsChart);
+    applyEarningsView();
 
     // --- Chart 3: Dividend per share ---
     charts.push(
@@ -173,7 +185,22 @@
     );
   }
 
-  document.addEventListener("DOMContentLoaded", renderAll);
+  function initEarningsToggle() {
+    const buttons = document.querySelectorAll("#chart-earnings-toggle button");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        earningsView = btn.getAttribute("data-view");
+        applyEarningsView();
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderAll();
+    initEarningsToggle();
+  });
 
   const media = window.matchMedia("(prefers-color-scheme: dark)");
   media.addEventListener("change", () => {

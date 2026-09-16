@@ -172,6 +172,17 @@ a {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.kpi-tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--series-1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-value {
+  font-variant-numeric: tabular-nums;
 }
 
 .kpi-label {
@@ -242,6 +253,64 @@ section.block .sub {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 20px 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--series-1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.chart-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.chart-toggle button {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.chart-toggle button:hover {
+  border-color: var(--series-1);
+  color: var(--text-primary);
+}
+
+.chart-toggle button.active {
+  background: var(--series-1);
+  border-color: var(--series-1);
+  color: #ffffff;
+}
+
+/* ---------- scroll-reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .chart-card h3 {

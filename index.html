@@ -26,25 +26,24 @@
       <p class="eyebrow">Independent portfolio project</p>
       <h1>CLP Holdings — FY2020&ndash;FY2025 Financial Trend &amp; Ratio Analysis</h1>
       <p class="lede">
-        A self-directed exercise in translating a capital-intensive infrastructure
-        business's reported financials into business insight: revenue and earnings
-        trends, the ratios that actually matter for a regulated/contracted power
-        group (underlying earnings, gearing, dividend resilience, coverage), and
-        what they say about CLP's risk profile through an energy-market shock and
-        recovery.
+        I picked CLP because a capital-intensive utility actually rewards this kind
+        of exercise. Its FY2020 to FY2025 numbers include a real earnings shock, a
+        dividend that never got cut, and two different profit measures that tell
+        almost opposite stories in the same year. This dashboard is the "what";
+        the <a href="analysis.html">written analysis</a> is the "so what."
       </p>
-      <p class="as-of">Data as of: FY2025 results, reported 26 Feb 2026 · figures in HK$ unless noted</p>
+      <p class="as-of">Data as of: FY2025 results, reported 26 Feb 2026. Figures in HK$ unless noted.</p>
     </section>
 
     <div class="disclaimer">
       <strong>Not a CLP Holdings publication.</strong> This is an independent personal
-      project prepared for a job application (Business Analyst – Finance, Graduate,
-      Global Infrastructure) and is not affiliated with, endorsed by, or reviewed by
-      CLP Holdings Limited. All figures are drawn from CLP's own published Annual
-      Results announcements and investor materials — see
-      <a href="analysis.html#sources">sources</a> for the full list. Where a figure is
-      self-calculated or estimated rather than directly disclosed, it is flagged in
-      the chart footnotes and in the data notes.
+      project I put together for a job application (Business Analyst, Finance,
+      Graduate, Global Infrastructure). It isn't affiliated with, endorsed by, or
+      reviewed by CLP Holdings Limited. Every figure is drawn from CLP's own
+      published Annual Results announcements and investor materials, listed in
+      full under <a href="analysis.html#sources">sources</a>. Anywhere a number is
+      self-calculated or estimated rather than stated directly by CLP, I've
+      flagged it in the chart footnotes and in the data notes.
     </div>
 
     <section class="block">
@@ -53,33 +52,33 @@
       <div class="kpi-row">
         <div class="kpi-tile">
           <p class="kpi-label">Revenue (FY2025)</p>
-          <p class="kpi-value">HK$88.0bn</p>
+          <p class="kpi-value" data-count-target="88.0" data-count-decimals="1" data-count-prefix="HK$" data-count-suffix="bn">HK$0.0bn</p>
           <span class="kpi-delta critical">▼ &minus;3.2% YoY</span>
-          <p class="kpi-note">Lower Australian wholesale prices vs. FY2024's spike</p>
+          <p class="kpi-note">Australian wholesale prices came off FY2024's spike</p>
         </div>
         <div class="kpi-tile">
           <p class="kpi-label">Total Earnings (FY2025)</p>
-          <p class="kpi-value">HK$10.47bn</p>
+          <p class="kpi-value" data-count-target="10.47" data-count-decimals="2" data-count-prefix="HK$" data-count-suffix="bn">HK$0.00bn</p>
           <span class="kpi-delta critical">▼ &minus;10.8% YoY</span>
-          <p class="kpi-note">Operating Earnings (underlying): HK$10.69bn, &minus;2.4% YoY</p>
+          <p class="kpi-note">Operating Earnings (the underlying measure) was HK$10.69bn, down just 2.4%</p>
         </div>
         <div class="kpi-tile">
           <p class="kpi-label">Dividend per share (FY2025)</p>
-          <p class="kpi-value">HK$3.20</p>
+          <p class="kpi-value" data-count-target="3.20" data-count-decimals="2" data-count-prefix="HK$">HK$0.00</p>
           <span class="kpi-delta good">▲ +1.6% YoY</span>
-          <p class="kpi-note">Raised every year 2020&ndash;2025, incl. through the 2022 shock</p>
+          <p class="kpi-note">Went up every year from 2020 to 2025, even through the 2022 shock</p>
         </div>
         <div class="kpi-tile">
           <p class="kpi-label">Debt / equity (FY2024)</p>
-          <p class="kpi-value">0.58x</p>
+          <p class="kpi-value" data-count-target="0.58" data-count-decimals="2" data-count-suffix="x">0.00x</p>
           <span class="kpi-delta neutral">latest available</span>
-          <p class="kpi-note">Moderate leverage, typical of a regulated/contracted utility</p>
+          <p class="kpi-note">Fairly moderate leverage for a regulated, contracted utility</p>
         </div>
         <div class="kpi-tile">
           <p class="kpi-label">FFO interest cover (FY2024)</p>
-          <p class="kpi-value">11x</p>
+          <p class="kpi-value" data-count-target="11" data-count-decimals="0" data-count-suffix="x">0x</p>
           <span class="kpi-delta good">strong coverage</span>
-          <p class="kpi-note">Funds from operations vs. interest expense — the metric infra lenders watch</p>
+          <p class="kpi-note">Funds from operations against interest expense. It's the number infrastructure lenders tend to check first.</p>
         </div>
       </div>
     </section>
@@ -93,24 +92,30 @@
           <p class="chart-sub">HK$bn · 2020&ndash;2025</p>
           <canvas id="chart-revenue" height="260"></canvas>
           <p class="chart-footnote">
-            2022's revenue spike is misleading on its own — it came from high Australian
-            wholesale power prices that CLP had to buy at, not sell at profitably. See
-            the earnings chart for why revenue and profit decoupled that year.
+            2022's revenue spike looks good until you know where it came from: high
+            Australian wholesale power prices that CLP was forced to buy at, not sell
+            at profitably. The earnings chart next to this one shows why revenue and
+            profit went in opposite directions that year.
           </p>
         </div>
 
         <div class="chart-card">
           <h3>Total Earnings vs. Operating Earnings</h3>
           <p class="chart-sub">HK$bn · solid = statutory profit, dashed = underlying/core business</p>
+          <div class="chart-toggle" id="chart-earnings-toggle">
+            <button type="button" class="active" data-view="both">Both</button>
+            <button type="button" data-view="total">Total Earnings</button>
+            <button type="button" data-view="underlying">Operating Earnings</button>
+          </div>
           <canvas id="chart-earnings" height="260"></canvas>
           <div class="legend-row">
             <span><span class="dot" style="background:var(--series-1)"></span>Total Earnings (statutory)</span>
             <span><span class="dot" style="background:var(--text-muted)"></span>Operating Earnings (underlying)</span>
           </div>
           <p class="chart-footnote">
-            2022's near-wipeout in Total Earnings was a hedging/outage shock in
-            EnergyAustralia, not a core-business collapse — Operating Earnings, which
-            strips out the fair-value swing, tells a much steadier story.
+            2022's near-wipeout in Total Earnings came from a hedging and outage shock
+            in EnergyAustralia, not a collapse of the core business. Toggle to
+            "Operating Earnings" above to see the much steadier story underneath it.
           </p>
         </div>
 
@@ -119,9 +124,9 @@
           <p class="chart-sub">HK$ · 2020&ndash;2025</p>
           <canvas id="chart-dps"></canvas>
           <p class="chart-footnote">
-            Raised every single year in this window, including 2022 when statutory
-            profit fell over 90% — classic regulated-utility payout policy, smoothing
-            one-off shocks for shareholders.
+            Went up every single year shown here, even in 2022 when statutory profit
+            fell more than 90%. Pretty typical regulated-utility behavior: smooth the
+            one-off shocks so shareholders barely notice them.
           </p>
         </div>
 
@@ -130,9 +135,10 @@
           <p class="chart-sub">% · circle = calculated here, diamond = third-party estimate</p>
           <canvas id="chart-roe"></canvas>
           <p class="chart-footnote">
-            Calculated as Total Earnings ÷ year-end equity attributable to
-            shareholders; 2024 (diamond marker) uses a third-party estimate on a
-            slightly different basis — shown for direction, not exact comparability.
+            Calculated as Total Earnings divided by year-end equity attributable to
+            shareholders. The 2024 point (diamond marker) is a third-party estimate on
+            a slightly different basis, so read it as directional rather than a clean
+            match to the other years.
           </p>
         </div>
       </div>
@@ -141,17 +147,18 @@
     <section class="block">
       <div class="disclaimer" style="margin-top:0;">
         Want the "so what" behind these numbers, not just the charts? Read the
-        <a href="analysis.html">full written analysis</a> — a 1&ndash;2 page interpretation
-        covering the trend story, what's driving it, and what I'd watch next as an analyst.
+        <a href="analysis.html">full written analysis</a>: a 1&ndash;2 page walkthrough of
+        the trend story, what's actually driving it, and what I'd still want to check
+        as an analyst.
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      Independent analysis by Jasmine Zhou, prepared as a portfolio piece for HSBC's
-      Business Analyst – Finance (Graduate, Global Infrastructure) application. Not
-      affiliated with CLP Holdings Limited or HSBC Holdings plc. Source data and
+      Independent analysis by Jasmine Zhou, put together as a portfolio piece for
+      HSBC's Business Analyst, Finance (Graduate, Global Infrastructure) application.
+      Not affiliated with CLP Holdings Limited or HSBC Holdings plc. Source data and
       methodology: see <a href="analysis.html#sources">Written Analysis → Sources</a>.
     </div>
   </footer>
@@ -159,5 +166,6 @@
   <script src="assets/js/vendor/chart.umd.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/charts.js"></script>
+  <script src="assets/js/interactions.js"></script>
 </body>
 </html>
