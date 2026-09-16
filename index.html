@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLP Holdings — Mini Financial Analysis</title>
+  <meta
+    name="description"
+    content="An independent, sourced mini financial analysis of CLP Holdings Limited (0002.HK), FY2020-FY2025: trend analysis, key infrastructure/utility ratios, and written business-insight interpretation."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">Mini Financial Analysis · <span>CLP Holdings Ltd (0002.HK)</span></div>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="analysis.html">Written Analysis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Independent portfolio project</p>
+      <h1>CLP Holdings — FY2020&ndash;FY2025 Financial Trend &amp; Ratio Analysis</h1>
+      <p class="lede">
+        A self-directed exercise in translating a capital-intensive infrastructure
+        business's reported financials into business insight: revenue and earnings
+        trends, the ratios that actually matter for a regulated/contracted power
+        group (underlying earnings, gearing, dividend resilience, coverage), and
+        what they say about CLP's risk profile through an energy-market shock and
+        recovery.
+      </p>
+      <p class="as-of">Data as of: FY2025 results, reported 26 Feb 2026 · figures in HK$ unless noted</p>
+    </section>
+
+    <div class="disclaimer">
+      <strong>Not a CLP Holdings publication.</strong> This is an independent personal
+      project prepared for a job application (Business Analyst – Finance, Graduate,
+      Global Infrastructure) and is not affiliated with, endorsed by, or reviewed by
+      CLP Holdings Limited. All figures are drawn from CLP's own published Annual
+      Results announcements and investor materials — see
+      <a href="analysis.html#sources">sources</a> for the full list. Where a figure is
+      self-calculated or estimated rather than directly disclosed, it is flagged in
+      the chart footnotes and in the data notes.
+    </div>
+
+    <section class="block">
+      <h2>FY2024 / latest-available snapshot</h2>
+      <p class="sub">CLP's most recently disclosed capital-structure and coverage metrics.</p>
+      <div class="kpi-row">
+        <div class="kpi-tile">
+          <p class="kpi-label">Revenue (FY2025)</p>
+          <p class="kpi-value">HK$88.0bn</p>
+          <span class="kpi-delta critical">▼ &minus;3.2% YoY</span>
+          <p class="kpi-note">Lower Australian wholesale prices vs. FY2024's spike</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">Total Earnings (FY2025)</p>
+          <p class="kpi-value">HK$10.47bn</p>
+          <span class="kpi-delta critical">▼ &minus;10.8% YoY</span>
+          <p class="kpi-note">Operating Earnings (underlying): HK$10.69bn, &minus;2.4% YoY</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">Dividend per share (FY2025)</p>
+          <p class="kpi-value">HK$3.20</p>
+          <span class="kpi-delta good">▲ +1.6% YoY</span>
+          <p class="kpi-note">Raised every year 2020&ndash;2025, incl. through the 2022 shock</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">Debt / equity (FY2024)</p>
+          <p class="kpi-value">0.58x</p>
+          <span class="kpi-delta neutral">latest available</span>
+          <p class="kpi-note">Moderate leverage, typical of a regulated/contracted utility</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">FFO interest cover (FY2024)</p>
+          <p class="kpi-value">11x</p>
+          <span class="kpi-delta good">strong coverage</span>
+          <p class="kpi-note">Funds from operations vs. interest expense — the metric infra lenders watch</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Six-year trends</h2>
+      <p class="sub">FY2020&ndash;FY2025, on the most comparable disclosed basis for each metric.</p>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>Revenue</h3>
+          <p class="chart-sub">HK$bn · 2020&ndash;2025</p>
+          <canvas id="chart-revenue" height="260"></canvas>
+          <p class="chart-footnote">
+            2022's revenue spike is misleading on its own — it came from high Australian
+            wholesale power prices that CLP had to buy at, not sell at profitably. See
+            the earnings chart for why revenue and profit decoupled that year.
+          </p>
+        </div>
+
+        <div class="chart-card">
+          <h3>Total Earnings vs. Operating Earnings</h3>
+          <p class="chart-sub">HK$bn · solid = statutory profit, dashed = underlying/core business</p>
+          <canvas id="chart-earnings" height="260"></canvas>
+          <div class="legend-row">
+            <span><span class="dot" style="background:var(--series-1)"></span>Total Earnings (statutory)</span>
+            <span><span class="dot" style="background:var(--text-muted)"></span>Operating Earnings (underlying)</span>
+          </div>
+          <p class="chart-footnote">
+            2022's near-wipeout in Total Earnings was a hedging/outage shock in
+            EnergyAustralia, not a core-business collapse — Operating Earnings, which
+            strips out the fair-value swing, tells a much steadier story.
+          </p>
+        </div>
+
+        <div class="chart-card">
+          <h3>Dividend per share</h3>
+          <p class="chart-sub">HK$ · 2020&ndash;2025</p>
+          <canvas id="chart-dps"></canvas>
+          <p class="chart-footnote">
+            Raised every single year in this window, including 2022 when statutory
+            profit fell over 90% — classic regulated-utility payout policy, smoothing
+            one-off shocks for shareholders.
+          </p>
+        </div>
+
+        <div class="chart-card">
+          <h3>Return on equity (ROE)</h3>
+          <p class="chart-sub">% · circle = calculated here, diamond = third-party estimate</p>
+          <canvas id="chart-roe"></canvas>
+          <p class="chart-footnote">
+            Calculated as Total Earnings ÷ year-end equity attributable to
+            shareholders; 2024 (diamond marker) uses a third-party estimate on a
+            slightly different basis — shown for direction, not exact comparability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="disclaimer" style="margin-top:0;">
+        Want the "so what" behind these numbers, not just the charts? Read the
+        <a href="analysis.html">full written analysis</a> — a 1&ndash;2 page interpretation
+        covering the trend story, what's driving it, and what I'd watch next as an analyst.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      Independent analysis by Jasmine Zhou, prepared as a portfolio piece for HSBC's
+      Business Analyst – Finance (Graduate, Global Infrastructure) application. Not
+      affiliated with CLP Holdings Limited or HSBC Holdings plc. Source data and
+      methodology: see <a href="analysis.html#sources">Written Analysis → Sources</a>.
+    </div>
+  </footer>
+
+  <script src="assets/js/vendor/chart.umd.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+</body>
+</html>

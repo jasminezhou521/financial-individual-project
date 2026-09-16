@@ -1,0 +1,102 @@
+/**
+ * CLP Holdings Limited (HKEX: 0002) — key financial data, FY2020–FY2025.
+ * CLP is a Hong Kong-listed, vertically-integrated power/infrastructure group
+ * (generation, transmission & retail in Hong Kong, Mainland China, Australia
+ * (EnergyAustralia), India, Southeast Asia, Taiwan).
+ *
+ * Figures are drawn from CLP's own Annual Results announcements / highlights
+ * decks (clpgroup.com/investor-relations) for FY2020-FY2025, cross-checked
+ * against third-party financial data aggregators where CLP's own release
+ * wasn't directly reachable in this exercise. "Total Earnings" is CLP's own
+ * label for statutory profit attributable to shareholders; "Operating
+ * Earnings" is CLP's own non-GAAP core-business measure, excluding fair
+ * value movements on energy derivatives and other one-off/exceptional items.
+ *
+ * This is a personal portfolio exercise, not a CLP Holdings publication —
+ * see README and the disclaimer on every page for details.
+ */
+
+const CLP_DATA = {
+  asOf: "FY2025 (reported 26 Feb 2026)",
+  currency: "HKD",
+
+  years: [2020, 2021, 2022, 2023, 2024, 2025],
+
+  // Consolidated revenue, HK$bn.
+  revenue: {
+    values: [79.59, 83.96, 100.66, 87.17, 90.96, 88.02],
+  },
+
+  // "Total Earnings" — statutory profit attributable to shareholders, HK$bn.
+  totalEarnings: {
+    values: [11.59, 8.63, 0.92, 6.79, 11.74, 10.47],
+    note:
+      "2022's near-wipeout was driven almost entirely by EnergyAustralia: a HK$2.9bn fair-value loss on energy hedges plus unplanned outages at the Yallourn (VIC) and Mount Piper (NSW) coal plants forced CLP to buy replacement power at spiking spot prices.",
+  },
+
+  // "Operating Earnings" — CLP's own underlying/core measure, ex fair-value
+  // movements and exceptional items, HK$bn. Comparable disclosure from 2022.
+  operatingEarnings: {
+    years: [2022, 2023, 2024, 2025],
+    values: [7.56, 9.32, 10.95, 10.69],
+  },
+
+  // Full-year dividend per share, HK$.
+  dividendPerShare: {
+    values: [2.62, 2.70, 2.80, 2.91, 3.15, 3.20],
+  },
+
+  // Return on equity, %, self-calculated as Total Earnings ÷ year-end equity
+  // attributable to shareholders, except where noted.
+  roe: {
+    years: [2021, 2022, 2023, 2024],
+    values: [7.4, 0.8, 6.4, 12.0],
+    basis: ["calculated", "calculated", "calculated", "third-party estimate"],
+    note:
+      "2021-2023 calculated here from CLP's reported Total Earnings ÷ equity attributable to shareholders at year end (HK$116.9bn / 109.4bn / 106.2bn). 2024 (~12%) is a third-party estimate on a slightly different profit/equity base (~HK$13bn / ~HK$110bn) — shown for direction, not exact comparability.",
+  },
+
+  // Latest available capital-structure / coverage snapshot (FY2024).
+  capitalStructure: {
+    year: 2024,
+    debtToEquity: 0.58, // x, total debt / total equity
+    ffoInterestCover: 11, // x, funds from operations / interest expense
+  },
+
+  totalAssets: {
+    years: [2021, 2022, 2023, 2024],
+    values: [239.81, 236.03, 229.05, 233.71], // HK$bn
+  },
+
+  equityAttributable: {
+    years: [2021, 2022, 2023],
+    values: [116.92, 109.39, 106.22], // HK$bn
+  },
+
+  sources: [
+    {
+      label: "CLP Holdings — 2025 Annual Results announcement & highlights (26 Feb 2026)",
+      url: "https://www.clpgroup.com/en/investor-relations/financial-reporting/results-and-presentations.html",
+    },
+    {
+      label: "CLP Holdings — 2024 Annual Results Presentation & Highlights (24 Feb 2025)",
+      url: "https://www.clpgroup.com/content/dam/clp-group/channels/investor/document/3-2-results---presentations/2024/CLP%202024%20Annual%20Results%20Presentation.pdf.coredownload.pdf",
+    },
+    {
+      label: "CLP Holdings — 2023 Annual Results Highlights (26 Feb 2024)",
+      url: "https://www.clpgroup.com/content/dam/clp-group/channels/media/document/embedded_pdfs_en/2023AR_highlights_en.pdf",
+    },
+    {
+      label: "CLP Holdings — 2022 Annual Report / Results Highlights (27 Feb 2023)",
+      url: "https://www.clpgroup.com/content/dam/clp-group/channels/investor/document/3-3-financial-reports/2022/e_2022Annual%20Report.pdf",
+    },
+    {
+      label: "CLP Holdings — Investor Relations, Quick Facts & Dividends",
+      url: "https://www.clpgroup.com/en/investor-relations/financial-reporting/quick-facts.html",
+    },
+    {
+      label: "South China Morning Post — \"Hong Kong utility CLP's 2024 profit surges 76% on strong performance in Australia\"",
+      url: "https://www.scmp.com/business/article/3299883/hong-kong-utility-clps-2024-profit-surges-76-strong-performance-australia",
+    },
+  ],
+};
